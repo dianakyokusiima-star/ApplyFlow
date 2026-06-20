@@ -5,6 +5,7 @@ import { cors } from "hono/cors";
 import "dotenv/config";
 import resumeRoutes from "./routes/resumes";
 import autofillRoutes from "./routes/autofill";
+import coverLetterRoutes from "./routes/coverLetters";
 
 const app = new Hono();
 
@@ -17,6 +18,7 @@ app.get("/health", (c) => {
 
 app.route("/api/v1/resumes", resumeRoutes);
 app.route("/api/v1/autofill", autofillRoutes);
+app.route("/api/v1/cover-letters", coverLetterRoutes);
 
 const port = 3000;
 console.log(`Server is running on http://0.0.0.0:${port}`);

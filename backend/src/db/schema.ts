@@ -25,3 +25,15 @@ export const resumes = sqliteTable("resumes", {
   createdAt: text("created_at").default(sql`CURRENT_TIMESTAMP`),
   updatedAt: text("updated_at").default(sql`CURRENT_TIMESTAMP`),
 });
+
+export const coverLetters = sqliteTable("cover_letters", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  resumeId: text("resume_id").references(() => resumes.id),
+  content: text("content").notNull(),
+  jobTitle: text("job_title"),
+  companyName: text("company_name"),
+  jobDescriptionHash: text("job_description_hash"),
+  tokensUsed: integer("tokens_used"),
+  createdAt: text("created_at").default(sql`CURRENT_TIMESTAMP`),
+});
